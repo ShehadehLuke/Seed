@@ -29,9 +29,9 @@ export default function Page(){
         <div className="flex flex-col justify-center items-center h-[90vh]">
             <main className="grid grid-cols-6 grid-rows-4 p-8 h-full m-12 rounded-lg gap-4">
                 {resources.map((resource) => (
-                    <div key={resource.name} className={`flex flex-col justify-between bg-green-800/70 p-4 rounded-lg gap-4 h-50 ${love_ya.className}`}>
-                        <Link href={resource.link} className="text-2xl hover:underline text-white">{resource.name}</Link>
-                        <p className="w-fit p-1 rounded-2xl bg-orange-500/40">{resource.hobby}</p>
+                    <div key={resource.name} className={`flex h-56 flex-col justify-between gap-4 card p-4 ${love_ya.className}`}>
+                        <Link href={resource.link} className="text-2xl hover:underline">{resource.name}</Link>
+                        <p className="w-fit rounded-2xl bg-secondary p-1">{resource.hobby}</p>
                     </div>
                 ))}
             </main>

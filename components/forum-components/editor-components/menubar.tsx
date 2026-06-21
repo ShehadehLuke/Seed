@@ -17,11 +17,11 @@ export const MenuBar = ({ editor }: { editor: Editor | null }) => {
     }
     
     return (
-        <div className="flex flex-row py-2 px-4 w-full bg-white/5 rounded-lg my-2 gap-2">
-            <button className={`rounded-md p-1 ${editorState?.isBold ? "bg-green-300/50" : ""}`} onClick={() => editor.chain().focus().toggleBold().run()}><Bold height={20} width={20} /></button>
-            <button className={`rounded-md p-1 ${editorState?.isStrike ? "bg-green-300/50" : ""}`} onClick={() => editor.chain().focus().toggleStrike().run()}><Strikethrough height={20} width={20} /></button>
-            <button className={`rounded-md p-1 ${editorState?.isItalic ? "bg-green-300/50" : ""}`} onClick={() => editor.chain().focus().toggleItalic().run()}><Italic height={20} width={20} /></button>
-            <button className={`rounded-md p-1 ${editorState?.isCode ? "bg-green-300/50" : ""}`} onClick={() => editor.chain().focus().toggleCode().run()}><Code height={20} width={20} /></button>
+        <div className="my-2 flex w-full flex-row gap-2 rounded-lg bg-muted/50 px-4 py-2">
+            <button className={`rounded-md p-1 ${editorState?.isBold ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleBold().run()}><Bold height={20} width={20} /></button>
+            <button className={`rounded-md p-1 ${editorState?.isStrike ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleStrike().run()}><Strikethrough height={20} width={20} /></button>
+            <button className={`rounded-md p-1 ${editorState?.isItalic ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleItalic().run()}><Italic height={20} width={20} /></button>
+            <button className={`rounded-md p-1 ${editorState?.isCode ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleCode().run()}><Code height={20} width={20} /></button>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <button className={`rounded-md p-1`}><Heading /></button>

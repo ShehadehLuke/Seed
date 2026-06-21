@@ -51,7 +51,7 @@ export default function PostPage({params}:{params: Promise<{post: string}>}){
     
     return(
         <div className="flex flex-col items-center justify-center h-full">
-            <main className={`bg-green-800/40 w-2/3 h-fit min-h-[50vh] p-4 rounded-xl ${love_ya.className}`}>
+            <main className={`h-fit min-h-[50vh] w-2/3 card p-4 ${love_ya.className}`}>
                 {
                 loading 
                 ? <h1>Loading...</h1> 
@@ -62,7 +62,7 @@ export default function PostPage({params}:{params: Promise<{post: string}>}){
                         <h2 className="text-2xl">{postContent.postSubtitle}</h2>
                     </div>
                     <hr />
-                    <div className="[&_h1]:text-5xl [&_h2]:text-4xl [&_h3]:text-3xl [&_h4]:text-2xl [&_h5]:text-xl [&_h6]:text-lg p-4 border-1 border-green-950 shadow-inner h-full shadow-black rounded-lg" dangerouslySetInnerHTML={{ __html: postContent.postBody}}></div>
+                    <div className="h-full rounded-lg border border-border p-4 shadow-inner [&_h1]:text-5xl [&_h2]:text-4xl [&_h3]:text-3xl [&_h4]:text-2xl [&_h5]:text-xl [&_h6]:text-lg" dangerouslySetInnerHTML={{ __html: postContent.postBody}}></div>
                 </div>
                 )}
             </main>

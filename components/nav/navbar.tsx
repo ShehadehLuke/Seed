@@ -1,12 +1,8 @@
 import Link from "next/link"
 import NavDropdown from "./dropdown"
-import { Fascinate_Inline } from "next/font/google"
 import { AuthButton } from "@/components/auth-button"
+import { ThemeSwitcher } from "@/components/theme-switcher"
 import { Suspense } from "react"
-
-const fascinateinline = Fascinate_Inline({
-    weight: "400"
-})
 
 export interface LinkInterface {
     title: string,
@@ -46,9 +42,9 @@ const Links: LinkInterface[] = [
 export default function NavBar() {
     
     return (
-        <nav className={`flex flex-row items-center justify-between p-8 bg-gradient-to-r from-green-800/40 via-green-800/70 to-green-800/40 text-xl ${fascinateinline.className}`}>
-            <Link href="/">Home</Link>
-            <div className={`flex flex-row items-center justify-end gap-x-10`}>
+        <nav className="flex flex-row items-center justify-between border-b-2 border-border bg-card/80 p-4 backdrop-blur md:px-8 md:py-4">
+            <Link href="/" className="text-lg font-semibold">Home</Link>
+            <div className="flex flex-row items-center justify-end gap-x-6 md:gap-x-10">
                 {Links.map((link) => (
                     <div key={link.href}>
                         {
@@ -59,6 +55,7 @@ export default function NavBar() {
                     </div>
                 ))}
 
+                <ThemeSwitcher />
                 <Suspense fallback={<div>Loading...</div>}>
                     <AuthButton />
                 </Suspense>

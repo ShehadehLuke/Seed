@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import NavBar from "@/components/nav/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner"
 
@@ -27,10 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`h-[90vh] ${geistSans.className} antialiased`}>
+      <body className={`min-h-screen ${geistSans.className} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <NavBar />
           {children}
           <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

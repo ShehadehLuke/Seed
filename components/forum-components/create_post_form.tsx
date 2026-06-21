@@ -77,7 +77,7 @@ export default function CreatePostForm() {
     })
 
     return (
-        <div className="bg-green-800/55 p-10 rounded-lg shadow-lg border-2 border-black w-full h-full">
+        <div className="w-full h-full card p-10">
             <FieldSet className="h-[90%]">
                 <FieldLegend>Create New Post</FieldLegend>
                 <FieldGroup className="h-full">
@@ -94,7 +94,7 @@ export default function CreatePostForm() {
                         <Input id="tags" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={(e) => handleTagInputKeyDown(e)} />
                         <div className="flex flex-row gap-2">  
                             {tags.map((tag) => (
-                                <p key={tag} className="max-w-fit py-1 px-2 rounded-2xl bg-green-400/30">{tag}</p>
+                                <p key={tag} className="max-w-fit rounded-2xl bg-secondary px-2 py-1">{tag}</p>
                             ))}
                         </div> 
                     </Field>
@@ -105,8 +105,8 @@ export default function CreatePostForm() {
                     </Field>
                 </FieldGroup>
             </FieldSet>
-            <Button onClick={handleCreatePost} className="mt-4 mr-4 bg-teal-700 hover:bg-teal-950">Post</Button>
-            <Button variant="destructive" className="hover:bg-red-900">Cancel</Button>
+            <Button onClick={handleCreatePost} className="mt-4 mr-4">Post</Button>
+            <Button variant="destructive">Cancel</Button>
         </div>
     )
 }

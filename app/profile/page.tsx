@@ -30,24 +30,24 @@ export default function ProtectedPage() {
     <div className="w-full flex h-fit items-center mt-[10vh] justify-around">
       <main className="flex flex-row w-1/2  gap-12 ">
         <div className="flex flex-col gap-y-8 items-start justify-start">
-            <Link className="px-2 py-4 bg-gray-500/10 rounded-xl w-full shadow shadow-black" href="/profile">Overview</Link>
-            <Link className="px-2 py-4 bg-gray-500/10 rounded-xl w-full shadow shadow-black" href="/profile/new-password">Update Password</Link>
-            <Link className="px-2 py-4 bg-gray-500/10 rounded-xl w-full shadow shadow-black" href="/profile/posts">My Posts</Link>
+            <Link className="w-full card px-2 py-4 shadow" href="/profile">Overview</Link>
+            <Link className="w-full card px-2 py-4 shadow" href="/profile/new-password">Update Password</Link>
+            <Link className="w-full card px-2 py-4 shadow" href="/profile/posts">My Posts</Link>
         </div>
         <div className="w-full flex flex-col h-full">
-          <div className="bg-green-800/80 text-lg p-3 px-5 rounded-md text-foreground flex gap-3 items-center w-full h-16 justify-center">
+          <div className="flex h-16 w-full items-center justify-center gap-3 card p-3 px-5 text-lg text-foreground">
             <InfoIcon size="16" strokeWidth={2} />
             Profile
           </div>
           <div className="">
             <pre className="flex flex-col items-start justify-start p-3 rounded overflow-auto gap-12">
               <Suspense>
-                <div className="flex flex-col gap-4 justify-between items-start p-6 w-full h-36 bg-gray-500/10 rounded-lg shadow shadow-black">
+                <div className="flex h-36 w-full flex-col items-start justify-between rounded-lg bg-muted/50 p-6 shadow">
                   <h1 className="text-lg">Email</h1>
                   <Separator />
                   <p className="text-lg mt-4">{email}</p>
                 </div>
-                <div className="flex flex-col justify-between items-start p-6 w-full h-36 bg-gray-500/10 rounded-lg shadow shadow-black">
+                <div className="flex h-36 w-full flex-col items-start justify-between rounded-lg bg-muted/50 p-6 shadow">
                   <h1 className="text-2xl">Username</h1>
                   <Separator />
                   <p className="text-lg mt-4">{displayName}</p>

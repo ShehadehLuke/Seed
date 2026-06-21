@@ -45,10 +45,10 @@ export function UpdatePasswordForm({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="bg-green-800/70 rounded-lg text-white border border-black shadow-lg shadow-black">
+      <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Reset Your Password</CardTitle>
-          <CardDescription className="text-white">
+          <CardDescription className="">
             Please enter your new password below.
           </CardDescription>
         </CardHeader>

@@ -64,9 +64,9 @@ export default function Page(){
     }
     return (
         <div className="flex flex-col items-center justify-center p-8 w-full">
-            <div className="flex flex-col gap-4 w-2/3 bg-green-800/40 p-10 min-h-[80vh] rounded-md h-fit">
+            <div className="flex h-fit min-h-[80vh] w-2/3 flex-col gap-4 card p-10">
                 {userPosts?.map((thumbnail) => (
-                    <div key={thumbnail.postId} className={`flex flex-row gap-8 w-full rounded-lg bg-white/10 p-2 justify-between ${love_ya.className}`}>
+                    <div key={thumbnail.postId} className={`flex w-full flex-row justify-between gap-8 rounded-lg bg-muted/50 p-2 ${love_ya.className}`}>
                         <div className={`flex flex-col gap-0`}>
                             <a href={`/forums/posts/${thumbnail.postId}`} className="hover:underline">{thumbnail.postTitle}</a>
                             <p>{thumbnail.postSubtitle}</p>

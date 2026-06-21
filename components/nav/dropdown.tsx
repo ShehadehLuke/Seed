@@ -12,7 +12,7 @@ export default function NavDropdown(props: NavDropdownProps) {
     return (
         <div className="p-0 w-fit relative" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
             <Link href={props.parentLink?.href ?? ""}>{props.parentLink?.title ?? ""}</Link>
-            <div className={`bg-green-700/30 px-2 py-4 absolute top-6 right-6 rounded-md ${isDropdownOpen ? "" : "hidden"}`}>
+            <div className={`absolute right-6 top-6 rounded-md border border-border bg-popover px-2 py-4 shadow-md ${isDropdownOpen ? "" : "hidden"}`}>
             {props.parentLink?.children?.map((childLink) => (
                 <div key={childLink.href}>
                     {childLink.children
