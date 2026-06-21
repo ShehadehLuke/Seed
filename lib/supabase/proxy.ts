@@ -48,7 +48,11 @@ export async function updateSession(request: NextRequest) {
   const user = data?.claims;
 
   if (
-    request.nextUrl.pathname !== "/" &&
+    (request.nextUrl.pathname !== "/" && 
+      request.nextUrl.pathname !== "/forums/posts" && 
+      request.nextUrl.pathname !== "/forums/tags" && 
+      request.nextUrl.pathname !== "/resources" && 
+      request.nextUrl.pathname !== "/articles") &&
     !user &&
     !request.nextUrl.pathname.startsWith("/login") &&
     !request.nextUrl.pathname.startsWith("/auth")
