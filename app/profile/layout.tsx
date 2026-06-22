@@ -13,7 +13,7 @@ export default function ProtectedLayout({
 }) {
   return (
     <main className="min-h-screen flex flex-col items-center">
-        <div className="flex-1 flex flex-col gap-20 w-full p-5 h-full">
+        <div className="flex-1 flex flex-col gap-10 w-full p-4 sm:p-5 md:gap-20">
           {children}
         </div>
     </main>

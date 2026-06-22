@@ -19,6 +19,7 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Strike from "@tiptap/extension-strike"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 export default function CreatePostForm() {
     const [postTitle, setPostTitle] = useState("")
@@ -26,7 +27,7 @@ export default function CreatePostForm() {
     const [tags, setTags] = useState<string[]>([])
     const [tagInput, setTagInput] = useState("")
     const [globalError, setGlobalError] = useState<Error>()
-
+    const router = useRouter()
     async function handleCreatePost() {
         const supabase = createClient();
         const { data: {user} } = await supabase.auth.getUser()
@@ -76,11 +77,20 @@ export default function CreatePostForm() {
 
     })
 
+    function cancelPostCreation() {
+        setPostTitle("")
+        setPostSubtitle("")
+        editor?.commands.clearContent()
+        setTagInput("")
+        setTags([])
+        router.push("/forums/posts")
+    }
+
     return (
-        <div className="w-full h-full card p-10">
-            <FieldSet className="h-[90%]">
+        <div className="h-full w-full card p-4 sm:p-6 md:p-10">
+            <FieldSet>
                 <FieldLegend>Create New Post</FieldLegend>
-                <FieldGroup className="h-full">
+                <FieldGroup className="gap-4">
                     <Field>
                         <FieldLabel>Post Title</FieldLabel>
                         <Input id="title" value={postTitle} onChange={(e) => setPostTitle(e.target.value)} autoComplete="off" placeholder="Super cool post title..." />
@@ -92,21 +102,23 @@ export default function CreatePostForm() {
                     <Field>
                         <FieldLabel>Tags</FieldLabel>
                         <Input id="tags" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={(e) => handleTagInputKeyDown(e)} />
-                        <div className="flex flex-row gap-2">  
+                        <div className="flex flex-wrap gap-2">  
                             {tags.map((tag) => (
                                 <p key={tag} className="max-w-fit rounded-2xl bg-secondary px-2 py-1">{tag}</p>
                             ))}
                         </div> 
                     </Field>
-                    <Field className="h-full">
+                    <Field>
                         <FieldLabel>Post Content</FieldLabel>
                         <MenuBar editor={editor}/>
-                        <EditorContent editor={editor} />
+                        <EditorContent editor={editor} className="min-h-[12rem]" />
                     </Field>
                 </FieldGroup>
             </FieldSet>
-            <Button onClick={handleCreatePost} className="mt-4 mr-4">Post</Button>
-            <Button variant="destructive">Cancel</Button>
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+            <Button onClick={handleCreatePost}>Post</Button>
+            <Button variant="destructive" onClick={cancelPostCreation}>Cancel</Button>
+            </div>
         </div>
     )
 }

@@ -1,17 +1,12 @@
-import { Love_Ya_Like_A_Sister } from "next/font/google"
-
-const love_ya = Love_Ya_Like_A_Sister({
-    weight: "400",
-})
-
+import { PageShell } from "@/components/page-shell";
 
 export default function Page() {
     return (
-        <div className="flex flex-col items-center justify-center h-[90vh] w-full">
-            <main className={`bg-card h-[80vh] w-2/3 p-8 rounded-xl ${love_ya.className}`}>
-                <h1 className="text-2xl">Articles</h1>
-                <p>No articles yet. Check back later!</p>
+        <PageShell className="flex min-h-[60vh] flex-col justify-center md:min-h-[80vh]">
+            <main className="card w-full p-6 md:p-8">
+                <h1 className="text-xl md:text-2xl">Articles</h1>
+                <p className="mt-2 text-muted-foreground">No articles yet. Check back later!</p>
             </main>
-        </div>
+        </PageShell>
     )
 }

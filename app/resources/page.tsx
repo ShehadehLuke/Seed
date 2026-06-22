@@ -1,10 +1,6 @@
-import { LinkIcon } from "lucide-react";
 import Link from "next/link";
-import { Love_Ya_Like_A_Sister } from "next/font/google"
+import { PageShell } from "@/components/page-shell";
 
-const love_ya = Love_Ya_Like_A_Sister({
-    weight: "400",
-})
 interface Resource {
     name: string,
     hobby: string,
@@ -21,20 +17,35 @@ const resources: Resource[] = [
         name: "Awesome Self-Hosted",
         hobby: "Self Hosting",
         link: "https://github.com/awesome-selfhosted/awesome-selfhosted"
+    },
+    {
+        name: "DND 5e Wikidot",
+        hobby: "DND 5e",
+        link: "https://dnd5e.wikidot.com/",
+    },
+    {
+        name: "5e Tools",
+        hobby: "DND 5e",
+        link: "https://5e.tools/",
+    },
+    {
+        name: "Yoga Basics; Yoga for Beginners",
+        hobby: "Yoga",
+        link: "https://www.yogabasics.com/practice/yoga-for-beginners/",
     }
 ]
 
 export default function Page(){
     return (
-        <div className="flex flex-col justify-center items-center h-[90vh]">
-            <main className="grid grid-cols-6 grid-rows-4 p-8 h-full m-12 rounded-lg gap-4">
+        <PageShell>
+            <main className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {resources.map((resource) => (
-                    <div key={resource.name} className={`flex h-56 flex-col justify-between gap-4 card p-4 ${love_ya.className}`}>
-                        <Link href={resource.link} className="text-2xl hover:underline">{resource.name}</Link>
-                        <p className="w-fit rounded-2xl bg-secondary p-1">{resource.hobby}</p>
+                    <div key={resource.name} className="flex min-h-48 flex-col justify-between gap-4 card p-4">
+                        <Link href={resource.link} className="text-lg hover:underline sm:text-xl md:text-2xl">{resource.name}</Link>
+                        <p className="w-fit rounded-2xl bg-secondary p-1 text-sm">{resource.hobby}</p>
                     </div>
                 ))}
             </main>
-        </div>
+        </PageShell>
     )
 }

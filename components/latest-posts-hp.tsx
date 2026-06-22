@@ -8,8 +8,9 @@ import { Badge } from "./ui/badge"
 
 export default function LatestPostsHP() {
     const [pagePostThumbnails, setPagePostThumbnails] = useState<PostThumbnail[]>()
-
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
+        setLoading(true)
         async function getFrontPagePosts() {
             const supabase = createClient()
             const {data, error} = await supabase.from("posts").select("post_title, tags, post_subtitle, author_username, post_id").limit(4)
@@ -30,16 +31,22 @@ export default function LatestPostsHP() {
             )
         }
         getFrontPagePosts()
+        .finally(() => {
+            setLoading(false)
+        })
     }, [])
+    if (loading) {
+        return <div>Loading...</div>
+    }
     return (
-        <div className="flex flex-row gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {pagePostThumbnails?.map((post) => (
-                <div key={post.postId} className="flex w-1/4 flex-col gap-2 rounded-md border border-border bg-secondary/50 p-4 shadow-lg">
+                <div key={post.postId} className="flex flex-col gap-2 rounded-md border border-border bg-secondary/50 p-4 shadow-lg">
                     <Link href={`/forums/posts/${post.postId}`} className="w-fit underline transition-transform hover:scale-105">{post.postTitle}</Link>
                     <p className="text-muted-foreground">{post.postSubtitle}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 max-h-xl overflow-y-auto">
                         {post.tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="max-w-96 truncate">{tag}</Badge>
+                            <Link href={`/forums/tags/${tag}`} key={tag} className="bg-accent px-2 py-1 rounded-2xl max-w-96 truncate hover:underline">{tag}</Link>
                         ))}
                     </div>
                     <p className="text-sm text-muted-foreground">{post.postAuthor}</p>

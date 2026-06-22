@@ -1,16 +1,12 @@
 "use client"
-import { Love_Ya_Like_A_Sister } from "next/font/google"
-import { Fascinate_Inline } from "next/font/google"
 import { useEffect, useState } from "react"
 import { type Tag } from "@/types/tags"
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-
-const love_ya = Love_Ya_Like_A_Sister({
-    weight: "400",
-})
+import { ArrowLeft, ArrowRight} from "lucide-react";
+import { PageShell } from "@/components/page-shell";
+import Link from "next/link";
 
 export default function Page(){
     const [tags, setTags] = useState<Tag[]>()
@@ -40,23 +36,23 @@ export default function Page(){
     }, [currentPage])
 
     return (
-        <div className="flex flex-col items-center justify-center p-8">
-            <main className="flex h-fit min-h-[80vh] w-2/3 flex-col gap-4 card">
-                <h1 className="text-3xl font-bold">Tags</h1>
-                <div className={`flex flex-col items-start justify-start gap-2 ${love_ya.className}`}>
+        <PageShell className="flex flex-col items-center gap-4">
+            <main className="flex min-h-[60vh] w-full flex-col gap-4 card md:min-h-[80vh]">
+                <h1 className="text-2xl font-bold md:text-3xl">Tags</h1>
+                <div className="flex flex-col items-start justify-start gap-2">
                     {tags?.map((tag) => (
-                        <div key={tag.name} className="flex w-full flex-row items-center justify-between rounded-lg bg-muted/50 pl-2 pr-6">
-                            <p className="text-lg">{tag.name}</p>
-                            <p>{tag.occurences}</p>
+                        <div key={tag.name} className="flex w-full flex-row items-center justify-between gap-4 rounded-lg bg-muted/50 py-2 pl-2 pr-4 sm:pr-6">
+                            <Link href={`/forums/tags/${tag.name}`} className="truncate text-base sm:text-lg hover:underline">{tag.name}</Link>
+                            <p className="shrink-0">{tag.occurences}</p>
                         </div>
                     ))}
                 </div>
             </main>
-            <div className="flex flex-row gap-8 mt-2">
+            <div className="flex flex-row items-center gap-4 sm:gap-8">
                 <Button disabled={currentPage < 2} onClick={() => setCurrentPage(currentPage - 1)} className="p-0"><ArrowLeft /></Button>
-                <p className="hover:underline">{currentPage}</p>
+                <p>{currentPage}</p>
                 <Button disabled={(tags?.length ?? 0) < 25} onClick={() => setCurrentPage(currentPage + 1)} className="p-0"><ArrowRight /></Button>
             </div>
-        </div>
+        </PageShell>
     )
 }

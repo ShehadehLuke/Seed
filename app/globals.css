@@ -50,17 +50,22 @@
 }
 
 @layer components {
-  .card{
+  .card {
     background-color: hsl(var(--card));
     border-color: hsl(var(--border));
     color: hsl(var(--card-foreground));
     border-width: 3px;
     border-style: solid;
     border-radius: var(--radius);
-    padding: 1rem;
-    margin: 1rem;
+    padding: 0.75rem;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .card {
+      padding: 1rem;
+    }
   }
 }
 
@@ -76,21 +81,21 @@
 .tiptap {
   @apply p-2 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-lg transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground md:text-sm focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50;
   h1 {
-    @apply text-5xl;
+    @apply text-3xl md:text-5xl;
   }
   h2 {
-    @apply text-4xl;
+    @apply text-2xl md:text-4xl;
   }
   h3 {
-    @apply text-3xl;
+    @apply text-xl md:text-3xl;
   }
   h4 {
-    @apply text-2xl;
+    @apply text-lg md:text-2xl;
   }
   h5 {
-    @apply text-xl;
+    @apply text-base md:text-xl;
   }
   h6 {
-    @apply text-lg;
+    @apply text-sm md:text-lg;
   }
 }

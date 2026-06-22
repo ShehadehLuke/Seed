@@ -10,11 +10,15 @@ interface NavDropdownProps {
 export default function NavDropdown(props: NavDropdownProps) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     return (
-        <div className="p-0 w-fit relative" onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
+        <div
+            className="relative w-fit p-0"
+            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseLeave={() => setIsDropdownOpen(false)}
+        >
             <Link href={props.parentLink?.href ?? ""}>{props.parentLink?.title ?? ""}</Link>
-            <div className={`absolute right-6 top-6 rounded-md border border-border bg-popover px-2 py-4 shadow-md ${isDropdownOpen ? "" : "hidden"}`}>
+            <div className={`absolute left-0 top-[80%] z-50 mt-1 min-w-[8rem] rounded-md border border-border bg-popover px-2 py-4 shadow-md ${isDropdownOpen ? "" : "hidden"}`}>
             {props.parentLink?.children?.map((childLink) => (
-                <div key={childLink.href}>
+                <div key={childLink.href} className="py-1">
                     {childLink.children
                     ? (<NavDropdown parentLink={childLink}/>)
                     : (<Link href={childLink.href}>{childLink.title}</Link>)}

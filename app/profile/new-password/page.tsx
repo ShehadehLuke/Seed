@@ -1,9 +1,12 @@
 import { UpdatePasswordForm } from "@/components/update-password-form";
+import { PageShell } from "@/components/page-shell";
 
 export default function Page() {
     return (
-        <div className="flex flex-row items-center justify-center">
-            <UpdatePasswordForm />
-        </div>
+        <PageShell className="flex items-center justify-center">
+            <div className="w-full max-w-md">
+                <UpdatePasswordForm />
+            </div>
+        </PageShell>
     )
 }

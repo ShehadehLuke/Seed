@@ -17,7 +17,7 @@ export const MenuBar = ({ editor }: { editor: Editor | null }) => {
     }
     
     return (
-        <div className="my-2 flex w-full flex-row gap-2 rounded-lg bg-muted/50 px-4 py-2">
+        <div className="my-2 flex w-full flex-wrap gap-2 rounded-lg bg-muted/50 px-2 py-2 sm:px-4">
             <button className={`rounded-md p-1 ${editorState?.isBold ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleBold().run()}><Bold height={20} width={20} /></button>
             <button className={`rounded-md p-1 ${editorState?.isStrike ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleStrike().run()}><Strikethrough height={20} width={20} /></button>
             <button className={`rounded-md p-1 ${editorState?.isItalic ? "bg-accent" : ""}`} onClick={() => editor.chain().focus().toggleItalic().run()}><Italic height={20} width={20} /></button>
